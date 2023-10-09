@@ -1,0 +1,54 @@
+/* high value = bigger display */
+
+
+@media (max-width: 1500px){
+  .slider {
+    width: 50vw;
+  }
+
+  .weekly-popular img {
+    width: 16vw;
+  }
+}
+
+
+@media (max-width: 1000px){
+  .slider {
+    width: 60vw;
+  }
+
+  .weekly-popular img {
+    width: 20vw;
+  }
+}
+
+@media (max-width: 850px){
+  .weekly-popular {
+    display: none;
+  }
+
+  .slider {
+    width: 70vw;
+  }
+}
+
+@media (max-width: 400px){
+  .weekly-popular {
+    display: none;
+  }
+
+  .slider {
+    width: 95vw;
+  }
+
+  .navigation-auto {
+    top: 90%;
+    left: 30px;
+  }
+  
+  .navigation-manual {
+    top: 90%;
+    left: 30px;
+  }
+}
+

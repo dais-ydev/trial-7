@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Main</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="main-header.css">
+  <link rel="stylesheet" href="featured-content.css">
+  <link rel="stylesheet" href="featured-content-media-quarries.css">
+</head>
+<body class="js-menu-body">
+  <!-- Header starts -->
+  <div class="js-main-header main-header">
+    <!-- Left side of header, logo, and buttons -->
+    <div class="left-header">
+      <div class="logo">
+        <img src="logo/header logo.svg" alt="">
+      </div>
+      <div class="left-side-buttons">
+        <button>Library</button>
+        <button>Recent</button>
+        <button>Popular</button>
+        <button>Genres</button>
+      </div>
+    </div>
+    <!-- Left side of header ends -->
+    <!-- Middle part of header, search bar -->
+    <div class="middle-header">
+      <input class="search-bar" type="search" placeholder="&#9813; Search">
+    </div>
+    <!-- Middle part of header ends -->
+    <!-- Right part of header, login, and signup buttons -->
+    <div class="right-header">
+      <button class="log-in-button">Log-in</button>
+      <button class="sign-up-button">Sign-up</button>
+      <!-- Menu icon and popup menu -->
+      <img onclick="popUpMenu()" class="menu-icon" src="icons/menu-icon.svg" alt="">
+      <div class="js-popup-menu popup-menu popup-menu-close">
+        <button>Library</button>
+        <button>Recent</button>
+        <button>Popular</button>
+        <button>Genres</button>
+        <button>Log-in</button>
+        <button>Sign-up</button>
+      </div>
+    </div>
+    <!-- Right part of header ends -->
+  </div>
+  <!-- featured-content start, image-slider, weekly popular -->
+  <div class="featured-content">
+    <div class="slider">
+      <div class="slides">
+        <!-- Radio buttons start -->
+        <input type="radio" name="radio-btn" id="radio1">
+        <input type="radio" name="radio-btn" id="radio2">
+        <input type="radio" name="radio-btn" id="radio3">
+        <input type="radio" name="radio-btn" id="radio4">
+        <!-- Radio buttons end -->
+        <!-- Slide images start -->
+        <div class="slide first">
+          <img src="slides/1.svg" alt="">
+        </div>
+        <div class="slide">
+          <img src="slides/2.svg" alt="">
+        </div>
+        <div class="slide">
+          <img src="slides/3.svg" alt="">
+        </div>
+        <!-- Slide images end -->
+        <!-- Automatic navigation start -->
+        <div class="navigation-auto">
+          <div class="auto-btn1"></div>
+          <div class="auto-btn2"></div>
+          <div class="auto-btn3"></div>
+        </div>
+        <!-- Automatic navigation end -->
+      </div>
+      <!-- Manual navigation start -->
+      <div class="navigation-manual">
+        <label for="radio1" class="manual-btn"></label>
+        <label for="radio2" class="manual-btn"></label>
+        <label for="radio3" class="manual-btn"></label>
+      </div>
+      <!-- Manual navigation end -->
+    </div>
+    <!-- Image slider end -->
+    <!-- Banner, weekly-popular -->
+    <div class="weekly-popular">
+      <img src="weekly-popular/windBreaker.svg" alt="">
+    </div>
+  </div>
+  <!-- Header End -->
+</body>
+<script>
+  function popUpMenu() {
+    const menuElement = document.querySelector('.js-popup-menu')
+    const mainHeader = document.querySelector('.js-main-header')
+
+    if (menuElement.classList.contains('popup-menu-close')) {
+      mainHeader.classList.add('main-header-front')
+      menuElement.classList.remove('popup-menu-close')
+      menuElement.classList.add('popup-menu-open')
+    } else if (menuElement.classList.contains('popup-menu-open')) {
+      mainHeader.classList.remove('main-header-front')
+      menuElement.classList.remove('popup-menu-open')
+      menuElement.classList.add('popup-menu-close')
+    }
+  }
+
+  let counter = 1;
+  setInterval(function () {
+    document.getElementById('radio' + counter).checked = true;
+    counter++;
+    if (counter > 3) {
+      counter = 1;
+    }
+  }, 5000);
+
+
+  // Variables to track touch start and end positions
+let touchStartX;
+let touchEndX;
+
+// Get the slider element
+const slider = document.querySelector('.slider');
+
+// Add touch start event listener
+slider.addEventListener('touchstart', function (e) {
+  // Record the starting X-coordinate when a touch begins
+  touchStartX = e.touches[0].clientX;
+});
+
+// Add touch end event listener
+slider.addEventListener('touchend', function (e) {
+  // Record the ending X-coordinate when a touch ends
+  touchEndX = e.changedTouches[0].clientX;
+
+  // Calculate the horizontal distance swiped (deltaX)
+  const deltaX = touchEndX - touchStartX;
+
+  // Determine the swipe direction and change the slide accordingly
+  if (deltaX > 50) {
+    // Swipe right (go to the previous slide)
+    counter--;
+    if (counter < 1) {
+      counter = 4; // Wrap around to the last slide if at the first slide
+    }
+  } else if (deltaX < -50) {
+    // Swipe left (go to the next slide)
+    counter++;
+    if (counter > 4) {
+      counter = 1; // Wrap around to the first slide if at the last slide
+    }
+  }
+
+  // Update the radio buttons to reflect the new slide
+  document.getElementById('radio' + counter).checked = true;
+});
+
+
+</script>
+</html>

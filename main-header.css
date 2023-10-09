@@ -1,0 +1,247 @@
+/* Global styling for the entire page */
+body {
+  background-color: rgb(11, 10, 13);
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+/* Styling for the main header */
+.main-header {
+  z-index: 0;
+  margin-bottom: 100px;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 0;
+  left: 0;
+  margin-bottom: 20px;
+  height: 64px;
+  width: 100%;
+  background: rgb(11, 10, 13);
+  border-bottom: 0.1mm solid rgb(38, 38, 38);
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.main-header-front{
+  z-index: 2;
+}
+
+
+
+/* Left side of the header containing logo and buttons */
+.left-header {
+  height: 100%;
+  width: 550px;
+  display: flex;
+  align-items: center;
+}
+
+/* Styling for the logo */
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.logo img {
+  margin-left: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+/* Styling for the buttons on the left side */
+.left-side-buttons {
+  flex: 1;
+  justify-content: space-evenly;
+  display: flex;
+}
+
+.left-side-buttons button {
+  border: none;
+  background-color: rgb(11, 10, 13);
+  color: rgb(206, 204, 204);
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 11px;
+  padding-left: 15px;
+  padding-right: 15px;
+  transition: background-color 0.15s ease;
+  border-radius: 5px;
+}
+
+.left-side-buttons button:hover {
+  background-color: rgb(124, 58, 130);
+  color: white;
+}
+
+.left-side-buttons button:active {
+  opacity: 0.8;
+}
+
+/* Middle part of the header containing the search bar */
+.middle-header {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styling for the search bar */
+.search-bar {
+  width: 85%;
+  height: 60%;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(62, 60, 60);
+  padding-left: 15px;
+  color: white;
+}
+
+.search-bar::placeholder {
+  color: white;
+}
+
+/* Right part of the header containing the menu icon and popup menu */
+.right-header {
+  height: 100%;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styling for the menu icon */
+.menu-icon {
+  display: none;
+}
+
+/* Styling for the popup menu */
+.popup-menu button {
+  display: none;
+}
+
+.right-header button {
+  border: none;
+  background-color: rgb(11, 10, 13);
+  color: rgb(206, 204, 204);
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 11px;
+  padding-left: 15px;
+  padding-right: 15px;
+  transition: background-color 0.15s ease;
+  border-radius: 5px;
+  position: relative;
+}
+
+.right-header button:hover {
+  background-color: rgb(124, 58, 130);
+  color: white;
+}
+
+.right-header button:active {
+  opacity: 0.8;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 850px) {
+  .left-side-buttons {
+    display: none;
+  }
+
+  .left-header {
+    width: 150px;
+  }
+
+  .log-in-button {
+    display: none;
+  }
+
+  .sign-up-button {
+    display: none;
+  }
+
+  .right-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+  }
+
+  .menu-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: block;
+    margin-right: 35px;
+    cursor: pointer;
+  }
+
+  .popup-menu {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(11, 10, 13);
+    border: 0.1mm solid rgb(102, 101, 101);
+    border-radius: 5px;
+    width: 200px;
+    position: absolute;
+    top: 115%;
+    right: 5%;
+    transition: opacity 0.5s ease, height 0.5s ease;
+  }
+
+  .popup-menu button {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    width: 200px;
+    border-radius: 5px;
+    background-color: rgb(11, 10, 13);
+    opacity: 0.8;
+    border: 0.1mm solid rgb(102, 101, 101);
+  }
+
+  .popup-menu button:hover {
+    background-color: rgb(124, 58, 130);
+    color: rgb(255, 255, 255);
+  }
+
+  .popup-menu-close {
+    height: 0px;
+    opacity: 0;
+  }
+
+  .popup-menu-open {
+    height: 240px;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 400px) {
+  .logo {
+    margin-left: 5px;
+  }
+
+  .menu-icon {
+    margin-right: 10px;
+  }
+
+  .popup-menu {
+    width: 150px;
+  }
+
+  .popup-menu button {
+    width: 150px;
+    font-size: 13px;
+    border-radius: 3px;
+  }
+}
